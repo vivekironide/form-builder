@@ -1,0 +1,210 @@
+.ui.accordion .title {
+    display: block;
+    padding: 15px 15px !important;
+    font-size: 14px !important;
+}
+
+.title {
+    display: block;
+    padding: 15px 15px !important;
+    font-size: 14px !important;
+    color: white;
+    text-decoration: none;
+}
+
+.title:hover, .ui.inverted.menu .dropdown.item:hover, .ui.inverted.menu .active.item, .ui.menu .dropdown.item:hover {
+    background-color: #2D3D43 !important;
+    color: white;
+}
+
+.title .icon {
+    margin-right: 10px !important;
+}
+
+.ui.accordion .title:hover {
+    background-color: #2D3D43 !important;
+}
+
+.ui.accordion .title .dropdown {
+    float: right !important;
+    padding-top: 5px !important;
+}
+
+.ui.accordion .title .icon {
+    margin-right: 10px !important;
+}
+
+.ui.accordion .content .item {
+    margin: 0 30px !important;
+}
+
+.ui.accordion .content .item:hover {
+    background-color: #2D3D43 !important;
+}
+
+.ui.menu {
+    margin: 0;
+    padding: 0.6rem;
+    border-radius: 0;
+}
+
+.ui.dropdown.item {
+    font-size: 16px
+}
+
+.sidebar.visible + .pusher {
+    width: calc(100% - 260px);
+}
+
+.pushable > .pusher { transition: all 0.3s ease; }
+
+body.pushable {
+    background-color: white !important;
+}
+
+.inverted-corporate, .ui.accordion .title, .ui.menu .item {
+    background-color: #263238 !important;
+    color: rgb(255, 250, 250) !important;
+}
+
+.header-style {
+    margin-left: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px;
+}
+
+h3.ui.header {
+    margin-top: 4rem !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.refresher {
+    float: right;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresher:hover {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.segment-hover {
+    transition: all 0.3s ease;
+}
+
+.segment-hover:hover {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.ui.button.btn-corporate, .ui.button.btn-corporate:active, .ui.button.btn-corporate:focus {
+    color: #FFFFFF;
+    background-color: #263238;
+    box-shadow: 0 20px 30px -16px rgba(9, 9, 16, .2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border-radius: .2rem;
+    transition: all 0.3s ease 0s;
+}
+
+.ui.button.btn-corporate:hover {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    color: #263238;
+    background-color: snow;
+}
+
+.m4 {
+    margin: 4rem !important;
+}
+
+.mx2 {
+    margin: 0 2rem !important;
+}
+
+.mt4 {
+    margin-top: 4rem !important;
+}
+
+.mt2 {
+    margin-top: 2rem !important;
+}
+
+
+.ml1 {
+    margin-left: 1rem !important;
+}
+
+.pt2 {
+    padding-top: 2rem !important;
+}
+
+.pb2 {
+    padding-bottom: 2rem !important;
+}
+
+.pt1 {
+    padding-top: 1rem !important;
+}
+
+.p2 {
+    padding: 2rem !important;
+}
+
+.ui.breadcrumb {
+    margin: 1rem;
+}
+
+.swal2-title {
+    font-size: 1.2rem !important;
+}
+
+.ui.pagination.menu .active.item {
+    background-color: rgba(0, 0, 0, .05) !important;
+    padding: .92857143rem 1.14285714rem !important;
+}
+
+.ui.pagination.menu .item {
+    background-color: #FFFFFF !important;
+    border: none !important;
+    margin-left: 0 !important;
+    padding: .92857143rem 1.14285714rem !important;
+}
+
+.ui.link.menu .item:hover, .ui.menu .link.item:hover {
+    background: rgba(0, 0, 0, .03) !important;
+    color: #263238 !important;
+    border: none;
+}
+
+.ui.pagination.menu {
+    padding: 0;
+}
+
+.ui.table {
+    width: 100% !important;
+}
+
+.dataTables_paginate.paging_simple_numbers {
+    padding: 1rem !important;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+div.dataTables_wrapper div.dataTables_processing {
+    padding: 1rem !important;
+    top: 33% !important;
+    height: auto !important;
+    z-index: 1000;
+}
+
+.ui.menu a.paginate_button:hover {
+    color: #263238 !important;
+    background-color: rgba(0, 0, 0, .05) !important;
+}
+
