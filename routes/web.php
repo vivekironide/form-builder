@@ -1,34 +1,55 @@
 <?php
 
+    use App\Http\Controllers\FormBuilderController;
     use App\Http\Controllers\LoginController;
-    use App\Http\Controllers\TicketController;
+    use App\Http\Controllers\FieldController;
     use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Web Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here is where you can register web routes for your application. These
+    | routes are loaded by the RouteServiceProvider within a group which
+    | contains the "web" middleware group. Now create something great!
+    |
+    */
 
-Route::get('/', [ TicketController::class, 'show'])->name( 'ticket.show');
+    Route::prefix('field')->middleware( 'auth')->group(function () {
+        Route::get( '/list', [ FieldController::class, 'index' ] )->name( 'field.list' );
 
-Route::get('/list', [ TicketController::class, 'index'])->name( 'ticket.list')->middleware('auth');
+        Route::get( '/create', [ FieldController::class, 'create' ] )->name( 'field.create' );
 
-Route::get('/showAgent/{id}', [ TicketController::class, 'showAgent'])->name( 'ticket.show.agent')->middleware('auth');
+        Route::post( '/store', [ FieldController::class, 'store' ] )->name( 'field.store' );
 
-Route::post('/showAgent/{id}', [ TicketController::class, 'updateAgent'])->name( 'ticket.update.agent')->middleware('auth');
+        Route::get( '/edit/{id}', [ FieldController::class, 'edit' ] )->name( 'field.edit' );
 
-Route::get('/create', [ TicketController::class, 'create'])->name( 'ticket.create');
+        Route::put( '/edit/{id}/update', [ FieldController::class, 'update' ] )->name( 'field.update' );
 
-Route::post('/store', [ TicketController::class, 'store'])->name( 'ticket.store');
+        Route::delete( '/delete/{id}', [ FieldController::class, 'destroy' ] )->name( 'field.destroy' );
 
-Route::get('/datatable', [ TicketController::class, 'datatable'])->name( 'ticket.datatable');
+        Route::get( '/datatable', [ FieldController::class, 'datatable' ] )->name( 'field.datatable' );
+    });
 
-Route::get('/login', [ LoginController::class, 'index'])->name( 'login');
+    Route::prefix('form-builder')->middleware( 'auth')->group(function () {
+        Route::get( '/', [ FormBuilderController::class, 'index' ] )->name( 'form.builder.index' );
 
-Route::post('/login', [ LoginController::class, 'logged'])->name( 'logged');
+        Route::get( '/create', [ FormBuilderController::class, 'create' ] )->name( 'form.builder' );
+
+        Route::post( '/store', [ FormBuilderController::class, 'store' ] )->name( 'form.builder.store' );
+
+        Route::get( '/show/{id}', [ FormBuilderController::class, 'show' ] )->name( 'form.show' );
+
+        Route::get( '/datatable', [ FormBuilderController::class, 'datatable' ] )->name( 'form.datatable' );
+
+        Route::delete( '/delete/{id}', [ FormBuilderController::class, 'destroy' ] )->name( 'form.destroy' );
+    });
+
+    Route::get( '/', [ FieldController::class, 'index' ] )->name( 'field.show' )->middleware( 'auth');
+
+    Route::get( '/login', [ LoginController::class, 'index' ] )->name( 'login' )->middleware( 'guest' );
+
+    Route::get( '/logout', [ LoginController::class, 'logout' ] )->name( 'logout' )->middleware( 'auth' );
+
+    Route::post( '/login', [ LoginController::class, 'logged' ] )->name( 'logged' )->middleware( 'guest' );

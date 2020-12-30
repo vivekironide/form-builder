@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Ticket;
+use App\Models\Field;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,9 +17,9 @@ class CustomerTicket extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param Ticket $ticket
+     * @param Field $ticket
      */
-    public function __construct(Ticket $ticket)
+    public function __construct( Field $ticket)
     {
         $this->ticket = $ticket;
     }

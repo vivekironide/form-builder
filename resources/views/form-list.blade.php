@@ -8,14 +8,12 @@
 @endsection
 
 @section('content')
-    <h2 class="ui header header-style"><i class="fa fa-home"></i> Tickets </h2>
+    <h2 class="ui header header-style"><i class="fa fa-home"></i> Forms </h2>
 
     <div class="ui breadcrumb">
-	    <a class="section" href="{{route('ticket.show')}}"><i class="fa fa-home"></i></a>
+	    <a class="section" href="{{route('field.list')}}"><i class="fa fa-home"></i></a>
 	    <i class="right chevron icon divider"></i>
-	    <div class="section">Ticket</div>
-	    <i class="right chevron icon divider"></i>
-        <div class="active section">List</div>
+	    <div class="section">Forms</div>
 	</div>
 
     <div id="image">
@@ -23,10 +21,8 @@
 			<table class="ui striped black celled table" id="datatable">
 				<thead class="full width">
 					<tr>
-						<th>Customer Name</th>
-						<th>Description</th>
-						<th>Email</th>
-						<th>Phone</th>
+						<th>Name</th>
+						<th>Date Created</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -61,22 +57,61 @@
                 "processing": "<i class=\"fa fa-refresh fa-2x fa-spin\" aria-hidden=\"true\"></i>",
             },
             "ajax"      : {
-                'url' : window.routes.ticketDatatable,
+                'url' : window.routes.formDatatable,
                 'type': 'GET',
                 'data': function( d ) {
 
                 },
             },
             "columns"   : [
-                { "data": "customer_name", 'searchable': false, 'orderable': false },
-                { "data": "description", 'searchable': false, 'orderable': false },
-                { "data": "email", 'searchable': false, 'orderable': false },
-                { "data": "phone", 'searchable': false, 'orderable': false },
+                { "data": "name", 'searchable': false, 'orderable': false },
+                { "data": "date_created", 'searchable': false, 'orderable': false },
                 { "data": "action", 'searchable': false, 'orderable': false },
             ],
             "order"     : false,
             "dom"       : 'frt<p>',
         } );
+
+        $(document).on('click', '#delete_field', function(e) {
+            e.preventDefault();
+
+            let $form = $( ".ui.form" );
+            let $meta = $( 'meta[name="csrf-token"]' );
+            $(this).prop('disabled', true);
+
+            axios( {
+                method : 'POST',
+                url    : $(this).attr( 'href' ),
+                data   : { _method: 'DELETE' },
+                headers: {
+                    'X-CSRF-TOKEN': $meta.attr( 'content' ),
+                    'Content-Type': 'application/json',
+                    'Accept'      : 'application/json',
+                },
+            } ).then( ( response ) => {
+                Toast.fire( {
+                    icon : 'success',
+                    title: response.data
+                } );
+            } ).catch( ( error ) => {
+                if( error.response.status === 500 ) {
+                    Toast.fire( {
+                        icon : 'error',
+                        title: "Field Submition failed."
+                    } );
+
+                    return;
+                }
+
+                Toast.fire( {
+                    icon : 'error',
+                    title: error.response.data
+                } );
+            } ).finally( () => {
+                $(this).prop('disabled', false);
+                invoiceDataTable.ajax.reload();
+            } );
+        });
 
     </script>
 @endsection

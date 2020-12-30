@@ -21,7 +21,7 @@
 			<img src="{{asset('images/logo.jpg')}}" alt="Online Support" class="ui image centered tiny">
 		</a>
 
-		<a class="title" href="{{route('ticket.show')}}">
+		<a class="title" href="{{route('field.list')}}">
 			<i class="icon home"></i>
 			Dashboard
 		</a>
@@ -29,13 +29,26 @@
         <div class="ui accordion inverted-corporate">
 			<div class="title">
                 <i class="archive icon"></i>
-                Ticket
+                Field
                 <i class="icon dropdown"></i>
             </div>
 
             <div class="content">
-                <a href="{{route('ticket.list')}}" class="item transition">List</a>
-                <a href="{{route('ticket.create')}}" class="item transition">Add</a>
+                <a href="{{route('field.list')}}" class="item transition">List</a>
+                <a href="{{route('field.create')}}" class="item transition">Add</a>
+            </div>
+		</div>
+
+        <div class="ui accordion inverted-corporate">
+			<div class="title">
+                <i class="archive icon"></i>
+                Form
+                <i class="icon dropdown"></i>
+            </div>
+
+            <div class="content">
+                <a href="{{route('form.builder.index')}}" class="item transition">List</a>
+                <a href="{{route('form.builder')}}" class="item transition">Builder</a>
             </div>
 		</div>
 	</div>
@@ -53,7 +66,7 @@
                          Welcome {{ auth()->user()->name }}
                         <i class="dropdown icon" style="padding-top: 3px"></i>
                         <div class="menu">
-                            <a class="item" href="">
+                            <a class="item" href="{{route('logout')}}">
                                 <i class="fa fa-sign-out fa-lg"></i>
                                 Logout
                             </a>
@@ -83,8 +96,9 @@
         <script src="{{asset('js/main.js') . '?' . filemtime(public_path('js/main.js'))}}"></script>
         <script>
 			var routes = {
-                ticketDatatable: "{{ route('ticket.datatable') }}",
-                ticketData: "{{ route('ticket.show') }}"
+                fieldDatatable: "{{ route('field.datatable') }}",
+                formDatatable: "{{ route('form.datatable') }}",
+                ticketData: "{{ route('field.show') }}"
             };
 
             var Toast = Swal.mixin( {

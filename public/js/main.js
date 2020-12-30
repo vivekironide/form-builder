@@ -7,6 +7,8 @@ $( document ).ready( function() {
 
     $( '.checkbox' ).checkbox();
 
+    $('.ui.radio.checkbox').checkbox();
+
     sidebar.sidebar( {
         dimPage   : false,
         transition: 'push',

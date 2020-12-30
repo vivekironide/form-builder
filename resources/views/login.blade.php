@@ -10,14 +10,13 @@
 @section('content')
     <h2 class="ui header header-style"><i class="fa fa-home"></i> Login </h2>
 
-    @error('msg')
-        <div class="ui floating message">
-            <p> <i class="info circle icon"></i> {{$message}}</p>
-        </div>
-    @enderror
-
     <div id="image">
 		<div class="ui container mt2">
+            @error('msg')
+                <div class="ui floating message">
+                    <p> <i class="info circle icon"></i> {{$message}}</p>
+                </div>
+            @enderror
 			<form class="ui equal width form mt2" action="{{route('logged')}}" method="POST">
                 @csrf
                 <div class="required field">
@@ -27,7 +26,7 @@
 
                 <div class="required field">
                     <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="Eg: 75xxxxxxx" id="password">
+                    <input type="password" name="password" id="password">
                 </div>
 
                 <div class="required field pt2">
