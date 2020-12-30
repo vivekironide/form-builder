@@ -19,4 +19,3 @@ php artisan serve
 
 Click the ip that shows after running serve command
 
-If everything went well, you will see the input field with `Submit` button in home page.
